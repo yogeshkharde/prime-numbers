@@ -27,4 +27,26 @@ public class PrimeNumberGeneratorService {
         }
         return primeNumbers;
     }
+
+//    /**
+//     * @param upperBound number upto which prime numbers are found starting from 2
+//     * @return list off all prime numbers from 2 to upperBound
+//     */
+//    public List<Integer> getPrimeNumbers_1(int upperBound) {
+//        List<Integer> primeNumbers = new LinkedList<Integer>();
+//        List<Integer> allNumbers = new LinkedList<Integer>();
+//        for (int i = 2; i <= upperBound; i++) {
+//            allNumbers.add(i);
+//        }
+//
+//
+//        for(int i=2;i<=upperBound; i++){
+//upperBound
+//        }
+//
+//        allNumbers
+//        return primeNumbers;
+//    }
+
+
 }
