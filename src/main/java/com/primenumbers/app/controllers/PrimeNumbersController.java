@@ -31,7 +31,7 @@ public class PrimeNumbersController {
     @ApiOperation(value = "Get Prime numbers")
     public PrimeNumberResponse getPrimeNumbers(@PathVariable("upperBound") int upperBound) {
 
-        List<Integer> primeNumbers = primeNumberGeneratorService.getPrimeNumbers(upperBound);
+        List<Integer> primeNumbers = primeNumberGeneratorService.getPrimeNumbers_1(upperBound);
 
         return new PrimeNumberResponse(upperBound, primeNumbers);
     }
