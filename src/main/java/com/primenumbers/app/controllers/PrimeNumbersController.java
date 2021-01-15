@@ -32,7 +32,7 @@ public class PrimeNumbersController {
         this.primeNumberGeneratorService = primeNumberGeneratorService;
     }
 
-    @GetMapping(value = "/{upperBound}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{upperBound}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get Prime numbers")
     public PrimeNumberResponse getPrimeNumbers(@PathVariable("upperBound") @Min(2) int upperBound) {
