@@ -4,8 +4,10 @@ import com.primenumbers.app.model.PrimeNumberResponse;
 import com.primenumbers.app.service.PrimeNumberGeneratorService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,7 @@ import java.util.List;
 @RequestMapping(value = "/primes")
 @Api(tags = "Prime Numbers", description = "Controller for generating prime numbers")
 @Validated
+@Slf4j
 public class PrimeNumbersController {
 
     private final PrimeNumberGeneratorService primeNumberGeneratorService;
@@ -29,10 +32,11 @@ public class PrimeNumbersController {
         this.primeNumberGeneratorService = primeNumberGeneratorService;
     }
 
-    @GetMapping("/{upperBound}")
+    @GetMapping(value = "/{upperBound}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get Prime numbers")
     public PrimeNumberResponse getPrimeNumbers(@PathVariable("upperBound") @Min(2) int upperBound) {
+        log.info("Finding all the prime numbers until {}", upperBound);
 
         List<Integer> primeNumbers = primeNumberGeneratorService.getPrimeNumbers_1(upperBound);
 

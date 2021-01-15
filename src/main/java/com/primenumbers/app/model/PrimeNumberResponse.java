@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class PrimeNumberResponse {
-    @JsonProperty
+    @JsonProperty(value = "Initial")
     private int initial;
 
-    @JsonProperty
+    @JsonProperty(value = "Primes")
     private List<Integer> primes;
 
     public PrimeNumberResponse() {

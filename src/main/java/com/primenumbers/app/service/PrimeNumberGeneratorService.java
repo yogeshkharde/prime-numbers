@@ -1,14 +1,18 @@
 package com.primenumbers.app.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class PrimeNumberGeneratorService {
 
-    /** using two for loops
+    /**
+     * using two for loops
+     *
      * @param upperBound number upto which prime numbers are found starting from 2
      * @return list off all prime numbers from 2 to upperBound
      */
@@ -25,10 +29,13 @@ public class PrimeNumberGeneratorService {
                 }
             }
         }
+        log.info("Returning {} primes", primeNumbers.size());
         return primeNumbers;
     }
 
-    /** using Sieve of Eratosthenes
+    /**
+     * using Sieve of Eratosthenes
+     *
      * @param upperBound number upto which prime numbers are found starting from 2
      * @return list off all prime numbers from 2 to upperBound
      */
@@ -54,6 +61,7 @@ public class PrimeNumberGeneratorService {
                 primeNumbers.add(i);
             }
         }
+        log.info("Returning {} primes", primeNumbers.size());
         return primeNumbers;
     }
 
