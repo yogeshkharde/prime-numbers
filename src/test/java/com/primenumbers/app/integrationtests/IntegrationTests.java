@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.io.IOException;
 import java.net.URI;
 import java.util.Map;
 
@@ -21,7 +20,7 @@ public class IntegrationTests {
 
     protected RestTemplate restTemplate = new RestTemplate();
 
-    void executeGet(String url, Map<String, String> urlPrams) throws IOException {
+    void executeGet(String url, Map<String, String> urlPrams) {
 
         URI uri = UriComponentsBuilder.fromUriString(url)
                 .buildAndExpand(urlPrams)

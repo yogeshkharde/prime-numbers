@@ -14,6 +14,15 @@ class PrimeNumberGeneratorServiceTest {
     @Test
     public void testNumberOfPrimeElementsAreNotMoreOrLessThanExpected() {
         //execute
+        List<Integer> primeNumbers = service.getPrimeNumbers(5);
+
+        //assert
+        Assertions.assertEquals(3, primeNumbers.size());
+    }
+
+    @Test
+    public void testNumberOfPrimeElementsAreNotMoreOrLessThanExpected_1() {
+        //execute
         List<Integer> primeNumbers = service.getPrimeNumbers_1(5);
 
         //assert
@@ -22,6 +31,18 @@ class PrimeNumberGeneratorServiceTest {
 
     @Test
     public void testReturnedPrimeNumbersAreSameAsExpected() {
+        //prepare
+        List<Integer> expectedList = Lists.newArrayList(2, 5, 3, 7, 11, 13);
+
+        //execute
+        List<Integer> primeNumbers = service.getPrimeNumbers(15);
+
+        //assert
+        CollectionUtils.isEqualCollection(expectedList, primeNumbers);
+    }
+
+    @Test
+    public void testReturnedPrimeNumbersAreSameAsExpected_1() {
         //prepare
         List<Integer> expectedList = Lists.newArrayList(2, 5, 3, 7, 11, 13);
 

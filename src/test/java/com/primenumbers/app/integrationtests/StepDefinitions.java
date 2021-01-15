@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -26,5 +27,16 @@ public class StepDefinitions extends IntegrationTests {
     @And("the client receives {int} prime numbers")
     public void theClientReceivesPrimeNumbers(int arg0) {
         Assert.assertEquals(arg0, responseEntity.getBody().getPrimes().size());
+    }
+
+    @When("the client requests prime numbers with upper bound of {int} and request fails as bad request")
+    public void theClientRequestsPrimeNumbersWithUpperBoundOfAndRequestFailsAsBadRequest(int arg0) {
+        Map<String, String> urlParams = new HashMap<>();
+        urlParams.put("upperBound", Integer.toString(arg0));
+        try {
+            executeGet("http://localhost:8080/primes/{upperBound}", urlParams);
+        } catch (HttpClientErrorException cee) {
+            Assert.assertEquals(400, cee.getRawStatusCode());
+        }
     }
 }
